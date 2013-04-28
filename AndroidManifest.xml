@@ -22,6 +22,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.muc13_01_bachnigsch.LightActivity"
+            android:label="@string/title_activity_light"
+            android:parentActivityName="com.example.muc13_01_bachnigsch.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.muc13_01_bachnigsch.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.muc13_01_bachnigsch.AccelerometerActivity"
+            android:label="@string/title_activity_accelerometer"
+            android:parentActivityName="com.example.com.muc13_01_bachnigsch.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.com.muc13_01_bachnigsch.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.muc13_01_bachnigsch.OrientationActivity"
+            android:label="@string/title_activity_orientation"
+            android:parentActivityName="com.example.com.muc13_01_bachnigsch.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.com.muc13_01_bachnigsch.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.muc13_01_bachnigsch.GPSActivity"
+            android:label="@string/title_activity_gps"
+            android:parentActivityName="com.example.com.muc13_01_bachnigsch.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.com.muc13_01_bachnigsch.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

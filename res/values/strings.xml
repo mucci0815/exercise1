@@ -3,6 +3,11 @@
 
     <string name="app_name">Exercise1</string>
     <string name="action_settings">Settings</string>
+    <string name="begruessung">Bitte Auszulesenden Sensor auswählen:</string>
+    <string name="title_activity_light">LightActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_accelerometer">AccelerometerActivity</string>
+    <string name="title_activity_orientation">OrientationActivity</string>
+    <string name="title_activity_gps">GPSActivity</string>
 
 </resources>
