@@ -9,8 +9,35 @@
     tools:context=".AccelerometerActivity" >
 
     <TextView
+        android:id="@+id/acc_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
+
+    <TextView
+        android:id="@+id/textAcc1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/acc_text"
+        android:layout_below="@+id/acc_text"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="80dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textAcc2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textAcc1"
+        android:layout_below="@+id/textAcc1"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textAcc3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textAcc2"
+        android:layout_below="@+id/textAcc2"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
