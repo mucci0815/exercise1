@@ -3,14 +3,42 @@ package com.example.muc13_01_bachnigsch;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-public class LightActivity extends Activity {
+public class LightActivity extends Activity implements SensorEventListener{
 
+	private SensorManager mSensorManager;
+	private Sensor mSensor;
+	private TextView textView;
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		mSensorManager.unregisterListener(this);
+
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+	}
+
+
+	
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +46,23 @@ public class LightActivity extends Activity {
 		setContentView(R.layout.activity_light);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		
+		
+		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+		mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+		
+		textView = (TextView)findViewById(R.id.existing_light);
+		
+		if (mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT) != null){
+			// Helligkeitssensor vorhanden
+			textView.setText("Helligkeitssensor vorhanden");
+		
+		}
+		else {
+			// Fehler - kein Helligkeitssensor
+			textView.setText("Kein Helligkeitssensor vorhanden");
+		}
 
 	}
 
@@ -53,6 +98,23 @@ public class LightActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+	    // The light sensor returns a single value.
+	    // Many sensors return 3 values, one for each axis.
+	    float lux = event.values[0];
+	    // Do something with this sensor value.
+	    TextView luxText = (TextView)findViewById(R.id.lux);
+	    luxText.setText("Die Helligkeit beträgt \n" + Float.toString(lux) + " Lux");
+		
 	}
 
 }
