@@ -9,7 +9,7 @@
     tools:context=".MainActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/lux"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/begruessung" />
@@ -18,8 +18,8 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/lux"
+        android:layout_below="@+id/lux"
         android:layout_marginTop="56dp"
         android:text="Helligkeit" 
         android:onClick="callLight" />
@@ -28,7 +28,7 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignLeft="@+id/lux"
         android:layout_below="@+id/button1"
         android:text="Beschleunigung" 
         android:onClick="callAccelometer" />
@@ -37,7 +37,7 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignLeft="@+id/lux"
         android:layout_below="@+id/button2"
         android:text="Orientierung" 
         android:onClick="callOrientation" />
@@ -46,7 +46,7 @@
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignLeft="@+id/lux"
         android:layout_below="@+id/button3"
         android:text="GPS" 
         android:onClick="callGPS" />
