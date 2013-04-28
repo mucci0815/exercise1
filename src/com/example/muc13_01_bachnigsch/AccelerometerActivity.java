@@ -17,7 +17,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
@@ -34,7 +33,6 @@ public class AccelerometerActivity extends Activity implements
 	private SensorManager mSensorManager;
 	private Sensor mAccelerometer;
 	private TextView text;
-	private float[] gravity = new float[3];
 	private float[] acceleration = new float[3];
 	
 	// initial timestamp
@@ -165,21 +163,10 @@ public class AccelerometerActivity extends Activity implements
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		// In this example, alpha is calculated as t / (t + dT),
-		// where t is the low-pass filter's time-constant and
-		// dT is the event delivery rate.
-
-		final float alpha = (float) 0.4;
-
-		// Isolate the force of gravity with the low-pass filter.
-//		gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
-//		gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];
-//		gravity[2] = alpha * gravity[2] + (1 - alpha) * event.values[2];
-
-		// Remove the gravity contribution with the high-pass filter.
-		acceleration[0] = event.values[0] - gravity[0];
-		acceleration[1] = event.values[1] - gravity[1];
-		acceleration[2] = event.values[2] - gravity[2];
+		
+		acceleration[0] = event.values[0];
+		acceleration[1] = event.values[1];
+		acceleration[2] = event.values[2];
 
 		// first time: init timestamp
 		if(initTimestamp == -1) initTimestamp = event.timestamp;
