@@ -1,14 +1,66 @@
 package com.example.muc13_01_bachnigsch;
 
-import android.os.Bundle;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.os.Build;
+import android.widget.TextView;
 
-public class OrientationActivity extends Activity {
+public class OrientationActivity extends Activity implements SensorEventListener {
+
+	private SensorManager mSensorManager;
+	private Sensor mSensor;
+	private TextView textView;
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		mSensorManager.unregisterListener(this);
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+	}
+	
+	
+	
+	@Override
+	public void onAccuracyChanged(Sensor arg0, int arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+
+		// Winkel aus Sensor auslesen
+		float azimuth_angle = event.values[0];
+	    float pitch_angle = event.values[1];
+	    float roll_angle = event.values[2];
+
+	    // Winkel in Textfeldern ausgeben
+	    TextView text1 = (TextView)findViewById(R.id.textView2);
+	    text1.setText( Float.toString(azimuth_angle) + " ° Gierwinkel");
+	    
+	    TextView text2 = (TextView)findViewById(R.id.textView3);
+	    text2.setText( Float.toString(pitch_angle) + " ° Nickwinkel");
+	    
+	    TextView text3 = (TextView)findViewById(R.id.textView4);
+	    text3.setText( Float.toString(roll_angle) + " ° Rollwinkel");
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +68,10 @@ public class OrientationActivity extends Activity {
 		setContentView(R.layout.activity_orientation);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+		mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);	
+		
 	}
 
 	/**
